@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@smui/data-table": "^7.0.0-beta.16",
     "@sveltejs/vite-plugin-svelte": "^3.0.2",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",
@@ -17,7 +18,6 @@
     "vite": "^5.1.4"
   },
   "dependencies": {
-    "gridjs": "^6.1.1",
-    "gridjs-svelte": "^2.1.1"
+    "@tanstack/svelte-table": "^8.12.0"
   }
 }
