@@ -4,7 +4,7 @@
     import { StatusUserForm, setStatus } from "../assets/StatusUserForm";
     import { onMount } from "svelte";
     import { FormResponse } from "../entity/Form";
-    import { getOrReloadUsers, getUser } from "../assets/userCrud";
+    import { API_URL, getOrReloadUsers, getUser } from "../assets/userCrud";
     import type { User } from "../entity/User";
     import { format } from "date-fns";
     import { writable, type Writable } from "svelte/store";
@@ -40,7 +40,7 @@
         <UserForm
             form={{
                 sendMethod: "POST",
-                actionLink: "http://localhost:8080/user/create",
+                actionLink: API_URL + "/create",
                 response: FormResponse.NONE,
             }}
         ></UserForm>
@@ -51,7 +51,7 @@
                 actionLink:
                     currentUser === undefined
                         ? ""
-                        : "http://localhost:8080/user/update/" + currentUser.id,
+                        : API_URL + "/update/" + currentUser.id,
                 response: FormResponse.NONE,
                 user: currentUser,
             }}
@@ -63,7 +63,7 @@
                 actionLink:
                     currentUser === undefined
                         ? ""
-                        : "http://localhost:8080/user/delete/" + currentUser.id,
+                        : API_URL + "/delete/" + currentUser.id,
                 response: FormResponse.NONE,
                 user: currentUser,
             }}
