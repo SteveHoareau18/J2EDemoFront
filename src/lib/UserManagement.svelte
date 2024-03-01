@@ -4,11 +4,11 @@
     import { StatusUserForm, setStatus } from "../assets/StatusUserForm";
     import { onMount } from "svelte";
     import { FormResponse } from "../entity/Form";
-    import { API_URL, getOrReloadUsers, getUser } from "../assets/userCrud";
+    import { API_URL, getOrReloadUsers, getUser } from "../assets/UserCrud";
     import type { User } from "../entity/User";
     import { format } from "date-fns";
     import { writable, type Writable } from "svelte/store";
-    import { users } from "../assets/userCrud";
+    import { users } from "../assets/UserCrud";
 
     export let status = setStatus(StatusUserForm.NONE);
     let currentUser: User | undefined;
