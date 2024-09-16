@@ -1,9 +1,33 @@
 <script lang="ts">
-    import { getOrReloadUsers, getUser } from "../../assets/userCrud";
+    import { onMount } from "svelte";
+    import { getOrReloadUsers, getUser } from "../../assets/UserCrud";
     import { FormResponse, type Form } from "../../entity/Form";
     import type { User } from "../../entity/User";
     import { format } from "date-fns";
     export let form: Form;
+
+    onMount(async () => {
+        const username = await window.prompt(
+            "Veuillez entrer votre nom d'utilisateur :",
+        );
+        const password = await window.prompt(
+            "Veuillez entrer votre mot de passe :",
+        );
+
+        if (username && password) {
+            const headers = new Headers();
+            headers.append(
+                "Authorization",
+                "Basic " + btoa(username + ":" + password),
+            );
+            headers.append(
+                "Authorization",
+                "Basic " + btoa(username + ":" + password),
+            );
+        } else {
+            alert("Nom d'utilisateur ou mot de passe non fourni.");
+        }
+    });
 
     const handleSubmit = (e: any) => {
         const ACTION_URL = e.target.action;

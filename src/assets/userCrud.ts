@@ -33,8 +33,21 @@ export async function getOrReloadUsers() {
 }
 
 export async function getUser(userId: number) {
-    const response = await fetch(API_URL + "/get/" + userId);
-    let user = (await response.json() as User);
-    user.bornDate = new Date(user.bornDate);
-    return user;
+    const username = await window.prompt('Veuillez entrer votre nom d\'utilisateur :');
+    const password = await window.prompt('Veuillez entrer votre mot de passe :');
+
+    if (username && password) {
+        const headers = new Headers();
+        headers.append('Authorization', 'Basic ' + btoa(username + ':' + password));
+
+        const response = await fetch(API_URL + "/get/" + userId, {
+            method: 'GET',
+            headers: headers,
+        });
+        let user = (await response.json() as User);
+        user.bornDate = new Date(user.bornDate);
+        return user;
+    } else {
+        alert('Nom d\'utilisateur ou mot de passe non fourni.');
+    }
 }
